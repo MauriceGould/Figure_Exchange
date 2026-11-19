@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Figure Exchange is a marketplace and community for anime and action figure collectors.">
+  <title>Figure Exchange</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#home">Figure Exchange</a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#marketplace">Marketplace</a></li>
+        <li><a href="#sell">Sell</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <p class="eyebrow">Buy. Sell. Trade. Collect.</p>
+        <h1>A marketplace built for figure collectors.</h1>
+        <p>Find anime and action figures, list collectibles you no longer want, make trades, organize your collection, and connect with other collectors.</p>
+        <div class="button-row">
+          <a class="button" href="#marketplace">Browse Figures</a>
+          <a class="button button-secondary" href="#sell">Create a Listing</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title">Everything in one place</h2>
+        <div class="feature-grid">
+          <article class="feature-card"><h3>Buy</h3><p>Browse figures listed by collectors and find items for your shelf.</p></article>
+          <article class="feature-card"><h3>Sell</h3><p>Create listings with pricing, condition, series, and availability information.</p></article>
+          <article class="feature-card"><h3>Trade</h3><p>Find figures marked for trade and make offers to other collectors.</p></article>
+          <article class="feature-card"><h3>Connect</h3><p>Share collections, ask questions, and discuss new releases.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="marketplace" aria-labelledby="marketplace-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">Marketplace</p><h2 id="marketplace-title">Browse figures</h2></div>
+          <p id="result-count" aria-live="polite"></p>
+        </div>
+
+        <form class="filters" id="filter-form">
+          <div class="field">
+            <label for="search">Search</label>
+            <input id="search" type="search" placeholder="Character, series, figure...">
+          </div>
+          <div class="field">
+            <label for="category-filter">Type</label>
+            <select id="category-filter">
+              <option value="all">All types</option>
+              <option value="Anime">Anime</option>
+              <option value="Action Figure">Action Figure</option>
+              <option value="Model Kit">Model Kit</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="availability-filter">Availability</label>
+            <select id="availability-filter">
+              <option value="all">Sale & Trade</option>
+              <option value="For Sale">For Sale</option>
+              <option value="For Trade">For Trade</option>
+              <option value="For Sale or Trade">Sale or Trade</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sort">Sort</label>
+            <select id="sort">
+              <option value="featured">Featured</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="product-grid" id="product-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sell" aria-labelledby="sell-title">
+      <div class="container narrow">
+        <p class="eyebrow">Sell or Trade</p>
+        <h2 id="sell-title">Create a figure listing</h2>
+        <p>Use this form to add a new figure to the marketplace. Demo listings are saved in your browser.</p>
+        <form class="listing-form" id="listing-form" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="figure-name">Figure name *</label><input id="figure-name" name="name" required></div>
+            <div class="field"><label for="series">Series / Franchise *</label><input id="series" name="series" required></div>
+            <div class="field"><label for="manufacturer">Manufacturer</label><input id="manufacturer" name="manufacturer"></div>
+            <div class="field"><label for="price">Price *</label><input id="price" name="price" type="number" min="0.01" step="0.01" required></div>
+            <div class="field"><label for="condition">Condition *</label><select id="condition" name="condition" required><option value="">Choose condition</option><option>New / Sealed</option><option>Like New</option><option>Opened / Displayed</option><option>Used</option><option>Damaged</option></select></div>
+            <div class="field"><label for="listing-type">Listing type *</label><select id="listing-type" name="availability" required><option value="">Choose type</option><option>For Sale</option><option>For Trade</option><option>For Sale or Trade</option></select></div>
+            <div class="field"><label for="figure-type">Figure type *</label><select id="figure-type" name="type" required><option>Anime</option><option>Action Figure</option><option>Model Kit</option></select></div>
+          </div>
+          <div class="field"><label for="description">Description *</label><textarea id="description" name="description" rows="5" required></textarea></div>
+          <p class="form-message" id="listing-message" aria-live="polite"></p>
+          <button class="button" type="submit">Publish Listing</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="collection" aria-labelledby="collection-title">
+      <div class="container">
+        <p class="eyebrow">Your Figures</p>
+        <h2 id="collection-title">Collection & Wishlist</h2>
+        <div class="collection-layout">
+          <div><h3>My Collection</h3><div class="saved-list" id="collection-list"></div></div>
+          <div><h3>Wishlist</h3><div class="saved-list" id="wishlist-list"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="community" aria-labelledby="community-title">
+      <div class="container narrow">
+        <p class="eyebrow">Community</p>
+        <h2 id="community-title">Collector discussions</h2>
+        <form class="post-form" id="post-form">
+          <div class="field"><label for="post-title">Discussion title</label><input id="post-title" required placeholder="What do you want to talk about?"></div>
+          <div class="field"><label for="post-body">Post</label><textarea id="post-body" rows="4" required placeholder="Share a question, collection update, or figure review..."></textarea></div>
+          <button class="button" type="submit">Create Post</button>
+        </form>
+        <div class="discussion-list" id="discussion-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p><strong>Figure Exchange</strong> — A front-end marketplace and community concept for collectors.</p></div>
+  </footer>
+
+  <dialog id="trade-dialog">
+    <form method="dialog" class="dialog-content">
+      <button class="dialog-close" value="cancel" aria-label="Close trade dialog">×</button>
+      <h2>Make a Trade Offer</h2>
+      <p id="trade-target"></p>
+      <div class="field"><label for="trade-item">Figure you are offering</label><input id="trade-item" placeholder="Example: Kakashi Nendoroid"></div>
+      <div class="field"><label for="trade-note">Message</label><textarea id="trade-note" rows="3"></textarea></div>
+      <button class="button" id="send-trade" value="default">Send Offer</button>
+    </form>
+  </dialog>
+</body>
+</html>
